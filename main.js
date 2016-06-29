@@ -49,12 +49,16 @@
 //  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 /**
- * http://www.luiselizondo.net/how-to-write-a-big-loop-on-node-js/
- * 
  * @returns {undefined}
  */
 (function () {
-
+    
+    /**
+     * https://blog.jcoglan.com/2010/08/30/the-potentially-asynchronous-loop/
+     * 
+     * @param {type} iterator
+     * @returns {undefined}
+     */
     Array.prototype.asyncEach = function (iterator) {
         var list = this,
             n = list.length,
@@ -128,7 +132,6 @@
         }
     }
 
-
     var keys = [],
         r = allPossibleCases(arrays);
 
@@ -143,7 +146,13 @@
 
         keys.push(key);
     }
-
+    
+    /**
+     * http://www.luiselizondo.net/how-to-write-a-big-loop-on-node-js/
+     * 
+     * @param {function} callback
+     * @returns {undefined}
+     */
     function init(callback) {
 
         var total = keys.length,
@@ -165,7 +174,7 @@
                         name: item
                     };
                     if (result.length === 0) {
-                        console.log(pre, 'Insert', item);
+                        //console.log(pre, 'Insert', item);
                         connection.query('INSERT INTO `mskeys` SET ?', data, function (err, result) {
                             if (counter < total) {
                                 resume();
@@ -174,7 +183,7 @@
                             }
                         });
                     } else {
-                        console.log(pre, 'Exists', item);
+                        //console.log(pre, 'Exists', item);
                         if (counter < total) {
                             resume();
                         } else {
