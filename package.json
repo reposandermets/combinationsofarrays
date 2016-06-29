@@ -1,0 +1,15 @@
+{
+  "name": "keystuff",
+  "version": "1.0.0",
+  "keywords": [
+    "combinations",
+    "licence",
+    "recovery",
+    "key"
+  ],
+  "author": "Sander Mets<sandermets0@gmail.com>",
+  "contributors": [],
+  "dependencies": {
+    "mysql": "^2.11.1"
+  }
+}
